@@ -4,7 +4,7 @@
       filled
       label="Name"
       :value="recipe.name"
-      :rules="[resultRecipeError]"
+      :rules="[resultRecipeNameError]"
       @input="(name) => onUpdateRecipe('name', name)"
       @click:append="onAddIngredient(ingredient)"
     />
@@ -30,6 +30,7 @@
       placeholder="Description...."
       rows="10"
       :value="recipe.description"
+      :rules="[resultRecipeDescriptionError]"
       :no-resize="true"
       @input="(value) => onUpdateRecipe('description', value)"
     ></v-textarea>
@@ -60,9 +61,12 @@ export default Vue.extend({
     };
   },
   computed: {
-    resultRecipeError(): boolean | string {
+    resultRecipeNameError(): boolean | string {
       return this.recipeError.name.succeeded || this.recipeError.name.message;
     },
+    resultRecipeDescriptionError(): boolean | string {
+      return this.recipeError.description.succeeded || this.recipeError.description.message;
+    }
   },
 });
 </script>
