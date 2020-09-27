@@ -1,1 +1,1 @@
-export { default as FormComponent } from "./Form.vue";
+export { default as EditRecipePageContainer } from "./PageContainer.vue";
