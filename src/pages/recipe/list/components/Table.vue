@@ -1,36 +1,60 @@
 <template>
-  <table class="table">
-    <header-component />
-    <tbody>
-      <template v-for="recipe in recipes">
-        <row-component :key="recipe.id" :recipe="recipe" />
-      </template>
-    </tbody>
-  </table>
+  <v-data-table
+    :headers="headers"
+    :items="recipes"
+    disable-pagination
+    :hide-default-footer="true"   
+  >
+    <template v-slot:[`item`]="{ item }"> 
+          <row-component :key="item.id" :recipe="item" />
+    </template> 
+  </v-data-table>
 </template>
 
 <script lang="ts">
 import Vue, { PropOptions } from "vue";
 import { Recipe } from "../viewModel";
-import HeaderComponent from "./Header.vue";
 import RowComponent from "./Row.vue";
 
 export default Vue.extend({
   name: "TableComponent",
-  components: { HeaderComponent, RowComponent },
+  components: { RowComponent },
   props: {
-    recipes: { required: true } as PropOptions<Recipe[]>,
-  },
+    recipes: { required: true } as PropOptions<Recipe[]>
+  },  
+  computed: {
+      headers () {
+        return [
+          {
+            text: 'Type',
+            align: 'center',
+            sortable: false,
+            filterable: false,
+            value: 'imageType'
+          },
+          {
+            text: 'Name',
+            align: 'center',
+            sortable: true,
+            filterable: false,
+            value: 'name'
+          },
+          {
+            text: 'Description',
+            align: 'center',
+            sortable: false,
+            filterable: false,
+            value: 'description'
+          },
+          {
+            text: 'Actions',
+            align: 'center',
+            sortable: false,
+            filterable: false,
+            value: 'actions'
+          }
+        ]
+      }
+  }  
 });
 </script>
-
-<style scoped>
-.table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-.table tbody tr:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-</style>

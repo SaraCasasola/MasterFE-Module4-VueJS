@@ -1,12 +1,12 @@
 <template>
   <app-layout>
-    <v-card>
+   <v-card>
       <v-card-title class="text-h4">
         Recipes
       </v-card-title>
       <v-card-text>
         <search-bar-component :search-text="searchText" :on-search="onSearch" />
-        <table-component :recipes="recipes" />
+        <table-component :recipes="recipes"/>
       </v-card-text>
     </v-card>
   </app-layout>

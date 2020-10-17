@@ -1,5 +1,8 @@
 <template>
-  <tr>
+  <tr :class="$style.row">
+    <td :class="$style.image">
+      <v-img :src="recipe.imageType" :alt="recipe.name" :class="$style.image"></v-img>
+    </td>
     <td :class="$style.name">
       <span>{{ recipe.name }}</span>
     </td>
@@ -33,6 +36,24 @@ export default Vue.extend({
 </script>
 
 <style module>
+
+.row {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.row:nth-child(odd) {
+  background: white;
+}
+
+.row:hover {
+  background: floralwhite !important;
+}
+
+.image {
+  width: 100px;
+  margin: 10px;
+}
+
 .name {
   width: 25%;
 }
@@ -50,6 +71,6 @@ export default Vue.extend({
 }
 
 .edit-button {
-  text-align: end;
+  text-align: center;
 }
 </style>

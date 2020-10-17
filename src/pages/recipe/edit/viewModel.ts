@@ -5,6 +5,7 @@ export interface Recipe {
   name: string;
   description: string;
   ingredients: string[];
+  imageType: string;
 }
 
 export const createEmptyRecipe = (): Recipe => ({
@@ -12,6 +13,7 @@ export const createEmptyRecipe = (): Recipe => ({
   name: "",
   description: "",
   ingredients: [],
+  imageType: ""
 });
 
 export interface RecipeError {
