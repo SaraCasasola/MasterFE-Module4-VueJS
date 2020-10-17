@@ -3,5 +3,8 @@ export interface Recipe {
   name: string;
   description: string;
   ingredients: string[];  
-  imageType: string;
+  type: {
+    imagePath: string;
+    typeCode: string;
+  };
 }

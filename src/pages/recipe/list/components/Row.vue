@@ -1,7 +1,7 @@
 <template>
   <tr :class="$style.row">
     <td :class="$style.image">
-      <v-img :src="recipe.imageType" :alt="recipe.name" :class="$style.image"></v-img>
+      <v-img :src="recipe.type.imagePath" :alt="recipe.name" :class="$style.image"></v-img>
     </td>
     <td :class="$style.name">
       <span>{{ recipe.name }}</span>

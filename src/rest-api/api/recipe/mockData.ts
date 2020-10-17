@@ -1,4 +1,5 @@
 import { Recipe } from "../../model";
+import { recipeTypes } from "../../../pages/recipe/recipeConstants";
 
 export const mockRecipes: Recipe[] = [
   {
@@ -11,7 +12,7 @@ export const mockRecipes: Recipe[] = [
      4. Using a spatula, ease around the edges of the omelette, then fold it over in half. When it starts to turn golden brown underneath, remove the pan from the heat and slide the omelette on to a plate.
     `,
     ingredients: ["2 eggs", "cheese", "salt", "black pepper"],
-    imageType: "src/pages/recipe/list/assets/recipe-image-types/egg.png"
+    type: recipeTypes.egg
   },
   {
     id: 2,
@@ -22,7 +23,7 @@ export const mockRecipes: Recipe[] = [
      3. Garnish salad with thin lemon slices.
     `,
     ingredients: ["salad", "2 tomatoes", "2 avocados", "1 tooth garlic", "1 onion", "lemon juice", "salt", "pepper"],
-    imageType: "src/pages/recipe/list/assets/recipe-image-types/vegetable.png"
+    type: recipeTypes.vegetable
   },
   {
     id: 3,
@@ -42,6 +43,6 @@ export const mockRecipes: Recipe[] = [
       "oregano",
       "salt",
     ],
-    imageType: "src/pages/recipe/list/assets/recipe-image-types/pasta.png"
+    type: recipeTypes.pasta
   },
 ];

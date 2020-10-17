@@ -30,7 +30,7 @@ export default Vue.extend({
             align: 'center',
             sortable: false,
             filterable: false,
-            value: 'imageType'
+            value: 'type'
           },
           {
             text: 'Name',
