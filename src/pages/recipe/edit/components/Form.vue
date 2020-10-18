@@ -1,5 +1,10 @@
 <template>
-  <v-form>
+  <v-form>    
+    <template>
+      <p class="text-caption ml-5">Recipe type</p>
+      <types-list-component class="mb-10" :typeSelected="recipe.type" :on-select-type="onSelectType"></types-list-component>
+    </template>
+
     <v-text-field
       filled
       label="Name"
@@ -41,12 +46,14 @@
 
 <script lang="ts">
 import Vue from "vue";
+import TypesListComponent from "./TypesList.vue";
 import IngredientListComponent from "./IngredientList.vue";
 import { FormProps } from "../formProps";
+import { recipeTypes } from "../../recipeConstants";
 
 export default Vue.extend({
   name: "FormComponent",
-  components: { IngredientListComponent },
+  components: { TypesListComponent, IngredientListComponent },
   props: {
     recipe: { required: true },
     recipeError: { required: true },
@@ -54,10 +61,11 @@ export default Vue.extend({
     onSave: { required: true },
     onRemoveIngredient: { required: true },
     onAddIngredient: { required: true },
+    onSelectType: {required: true}
   } as FormProps,
   data() {
     return {
-      ingredient: "",
+      ingredient: ""
     };
   },
   computed: {

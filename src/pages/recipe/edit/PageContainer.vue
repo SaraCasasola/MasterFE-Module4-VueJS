@@ -1,5 +1,5 @@
 <template>
-  <recipe-edit-page v-bind="{ recipe, recipeError, onUpdateRecipe, onAddIngredient, onSave, onRemoveIngredient }" />
+  <recipe-edit-page v-bind="{ recipe, recipeError, onUpdateRecipe, onSelectType, onAddIngredient, onSave, onRemoveIngredient }" />
 </template>
 
 <script lang="ts">
@@ -7,8 +7,9 @@ import Vue from "vue";
 import RecipeEditPage from "./Page.vue";
 import { fetchRecipeById, save } from "../../../rest-api/api/recipe";
 import { mapRecipeModelToVm, mapRecipeVmToModel } from "./mapper";
-import { createEmptyRecipe, createEmptyRecipeError } from "./viewModel";
+import { Recipe, RecipeType, createEmptyRecipe, createEmptyRecipeError } from "./viewModel";
 import { validations } from "./validations";
+import { recipeTypes } from "../recipeConstants";
 
 export default Vue.extend({
   name: "RecipeEditPageContainer",
@@ -53,6 +54,12 @@ export default Vue.extend({
           };
         }
       });
+    },
+    onSelectType(recipeType: RecipeType) {
+      this.recipe = {
+        ...this.recipe,
+        type: recipeType
+      };
     },
     onAddIngredient(ingredient: string) {
       this.recipe = {

@@ -50,12 +50,13 @@ export default Vue.extend({
 }
 
 .image {
-  width: 100px;
+  width: 85px;
   margin: 10px;
 }
 
 .name {
   width: 25%;
+  text-align: center;
 }
 
 .description {

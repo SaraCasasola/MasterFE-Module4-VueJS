@@ -1,34 +1,42 @@
 export const recipeTypes = {
     dessert: {
         imagePath: "src/pages/recipe/assets/recipe-image-types/dessert.png",
-        typeCode: "dessert"
+        typeCode: "dessert",
+        title: "DESSERT"
     },
     drink: {
         imagePath: "src/pages/recipe/assets/recipe-image-types/drink.png",
-        typeCode: "drink"
+        typeCode: "drink",
+        title: "DRINK"
     },
     egg: {
         imagePath: "src/pages/recipe/assets/recipe-image-types/egg.png",
-        typeCode: "egg"
+        typeCode: "egg",
+        title: "EGG"
     },
     fish: {
         imagePath: "src/pages/recipe/assets/recipe-image-types/fish.png",
-        typeCode: "fish"
+        typeCode: "fish",
+        title: "FISH"
     },
     meat: {
         imagePath: "src/pages/recipe/assets/recipe-image-types/meat.png",
-        typeCode: "meat"
+        typeCode: "meat",
+        title: "MEAT"
     },
     noImage: {
         imagePath: "src/pages/recipe/assets/recipe-image-types/no-image.png",
-        typeCode: "noImage"
+        typeCode: "noImage",
+        title: "NOT APPLY"
     },
     pasta: {
         imagePath: "src/pages/recipe/assets/recipe-image-types/pasta.png",
-        typeCode: "pasta"
+        typeCode: "pasta",
+        title: "PASTA"
     },
     vegetable: {
         imagePath: "src/pages/recipe/assets/recipe-image-types/vegetable.png",
-        typeCode: "vegetable"
+        typeCode: "vegetable",
+        title: "VEGETABLE"
     }
 };

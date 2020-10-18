@@ -6,5 +6,6 @@ export interface Recipe {
   type: {
     imagePath: string;
     typeCode: string;
+    title: string;
   };
 }

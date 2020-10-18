@@ -5,10 +5,13 @@ export interface Recipe {
   name: string;
   description: string;
   ingredients: string[];
-  type: {
+  type: RecipeType;
+}
+
+export interface RecipeType {
     imagePath: string;
     typeCode: string;
-  };
+    title: string
 }
 
 export const createEmptyRecipe = (): Recipe => ({
@@ -18,7 +21,8 @@ export const createEmptyRecipe = (): Recipe => ({
   ingredients: [],
   type: {
     imagePath: "",
-    typeCode: ""
+    typeCode: "",
+    title: ""
   }
 });
 

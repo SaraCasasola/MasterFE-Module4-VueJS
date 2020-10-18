@@ -20,6 +20,7 @@ export default Vue.extend({
     onSave: { require: true },
     onRemoveIngredient: { required: true },
     onAddIngredient: { required: true },
+    onSelectType: {required: true}
   } as FormProps,
 });
 </script>
