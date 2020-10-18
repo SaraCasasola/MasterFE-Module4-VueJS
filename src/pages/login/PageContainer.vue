@@ -1,5 +1,5 @@
 <template>
-  <login-page v-bind="{ login, updateLogin, loginRequest, loginError }" />
+  <login-page v-bind="{ login, updateLogin, loginRequest, loginRequestError, loginError }" />
 </template>
 
 <script lang="ts">
@@ -17,7 +17,8 @@ export default Vue.extend({
   data() {
     return {
       login: createEmptyLogin(),
-      loginError: createEmptyLoginError()
+      loginError: createEmptyLoginError(),
+      loginRequestError: null
     };
   },
   methods: {
@@ -43,13 +44,7 @@ export default Vue.extend({
             .then(() => {
               this.$router.push(baseRoutes.recipe);
             })
-            .catch(error =>
-              alert(
-                `Este mensaje debes implementarlo con el componente Snackbar de Vuetify ;) => ${error}`
-              )
-            );
-
-
+            .catch(error => this.loginRequestError = error);
         } else {
           this.loginError = {
             ...this.loginError,

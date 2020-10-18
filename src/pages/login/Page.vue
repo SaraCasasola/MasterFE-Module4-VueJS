@@ -29,7 +29,8 @@ export default Vue.extend({
     login: { required: true },
     loginError: { required: true },
     updateLogin: { required: true },
-    loginRequest: { required: true },
+    loginRequest: { required: true },    
+    loginRequestError: { required: true }
   } as FormProps,
 });
 </script>

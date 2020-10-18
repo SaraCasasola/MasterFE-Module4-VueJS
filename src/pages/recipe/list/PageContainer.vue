@@ -27,11 +27,7 @@ export default Vue.extend({
     },
   },
   created() {
-    fetchRecipes()
-      .then((recipes) => {
-        this.recipes = mapRecipeListModelToVm(recipes);
-      })
-      .catch((error) => console.log(error));
+    this.getRecipes();
   },
   methods: {
     onSearch(value: string) {
@@ -40,12 +36,15 @@ export default Vue.extend({
     onRemove(id: number) {
       remove(id).then((message) => {
           console.log(message);
-          fetchRecipes()
-          .then((recipes) => {
-            this.recipes = mapRecipeListModelToVm(recipes);
-          })
-        .catch((error) => console.log(error));
-          })
+          this.getRecipes();
+        })
+      .catch((error) => console.log(error));
+    },
+    getRecipes() {
+      fetchRecipes()
+        .then((recipes) => {
+          this.recipes = mapRecipeListModelToVm(recipes);
+        })
       .catch((error) => console.log(error));
     }
   },
