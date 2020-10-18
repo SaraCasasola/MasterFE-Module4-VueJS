@@ -5,6 +5,8 @@ import { recipeTypes } from "../../../pages/recipe/recipeConstants";
 let recipes = mockRecipes;
 let newRecipeId = 0;
 
+const indexToGetNewId = 1;
+
 export const fetchRecipes = (): Promise<Recipe[]> => {
   return Promise.resolve(recipes);
 };
@@ -24,12 +26,17 @@ export const update = (recipe: Recipe): Promise<string> => {
 };
 
 export const save = (recipe: Recipe): Promise<string> => {
-  const indexToGetNewId = 1;
   const newId = recipes.length + indexToGetNewId;
   recipe.id = newId; 
   if(recipe.type.typeCode === "") recipe.type = recipeTypes.noImage;
   recipes.push(recipe);
   return Promise.resolve("Save recipe success");  
+};
+
+export const remove = (id: number): Promise<string> => {
+  recipes.splice(id - indexToGetNewId, 1);
+  recipes.forEach((recipe, index) => recipe.id = index + indexToGetNewId);
+  return Promise.resolve("Delete recipe success");  
 };
 
 const saveRecipeByIndex = (index: number, recipe: Recipe): Promise<string> => {

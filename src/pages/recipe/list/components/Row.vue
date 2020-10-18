@@ -13,6 +13,9 @@
       <v-btn text icon :to="routeEdit">
         <v-icon>edit</v-icon>
       </v-btn>
+      <v-btn text icon @click.prevent="() => onRemove(recipe.id)">
+        <v-icon>delete</v-icon>
+      </v-btn>
     </td>
   </tr>
 </template>
@@ -26,12 +29,13 @@ export default Vue.extend({
   name: "RowComponent",
   props: {
     recipe: { required: true } as PropOptions<Recipe>,
+    onRemove: { required: true } as PropOptions<(id: number) => void>
   },
   computed: {
     routeEdit(): string {
       return `${baseRoutes.recipe}/${this.recipe.id}`;
     }
-  },
+  }
 });
 </script>
 

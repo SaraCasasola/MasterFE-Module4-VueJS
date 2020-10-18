@@ -10,7 +10,7 @@
       </v-card-title>
       <v-card-text>
         <search-bar-component :search-text="searchText" :on-search="onSearch" />
-        <table-component :recipes="recipes"/>
+        <table-component :recipes="recipes" :onRemove="onRemove"/>
       </v-card-text>
     </v-card>
   </app-layout>
@@ -34,7 +34,8 @@ export default Vue.extend({
   props: {
     recipes: { required: true } as PropOptions<Recipe[]>,
     searchText: String,
-    onSearch: { required: true } as PropOptions<(value: string) => void>
+    onSearch: { required: true } as PropOptions<(value: string) => void>,
+    onRemove: { required: true } as PropOptions<(id: number) => void>
   },
 });
 </script>

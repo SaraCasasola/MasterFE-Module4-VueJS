@@ -6,7 +6,7 @@
     :hide-default-footer="true"   
   >
     <template v-slot:[`item`]="{ item }"> 
-          <row-component :key="item.id" :recipe="item" />
+          <row-component :key="item.id" :recipe="item" :onRemove="onRemove"/>
     </template> 
   </v-data-table>
 </template>
@@ -20,7 +20,8 @@ export default Vue.extend({
   name: "TableComponent",
   components: { RowComponent },
   props: {
-    recipes: { required: true } as PropOptions<Recipe[]>
+    recipes: { required: true } as PropOptions<Recipe[]>,
+    onRemove: { required: true } as PropOptions<(id: number) => void>
   },  
   computed: {
       headers () {
