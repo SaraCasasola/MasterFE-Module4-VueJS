@@ -1,5 +1,5 @@
 <template>
-  <login-page v-bind="{ login, updateLogin, loginRequest, loginRequestError, loginError }" />
+  <login-page v-bind="{ login, updateLogin, loginRequest, loginRequestError, loginError, showErrorToast }" />
 </template>
 
 <script lang="ts">
@@ -18,11 +18,14 @@ export default Vue.extend({
     return {
       login: createEmptyLogin(),
       loginError: createEmptyLoginError(),
-      loginRequestError: null
+      loginRequestError: null,
+      showErrorToast: false
     };
   },
   methods: {
     updateLogin(field: string, value: string) {
+      this.showErrorToast = false;
+      
       this.login = {
         ...this.login,
         [field]: value
@@ -43,8 +46,12 @@ export default Vue.extend({
           loginRequest(loginModel)
             .then(() => {
               this.$router.push(baseRoutes.recipe);
+              this.showErrorToast = false;
             })
-            .catch(error => this.loginRequestError = error);
+            .catch(error => {
+              this.loginRequestError = error;
+              this.showErrorToast = true;
+            });
         } else {
           this.loginError = {
             ...this.loginError,

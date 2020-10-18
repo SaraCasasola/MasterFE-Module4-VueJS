@@ -6,4 +6,6 @@ export interface FormProps {
   loginError: PropOptions<LoginError>;
   updateLogin: PropOptions<(field: string, value: string) => void>;
   loginRequest: PropOptions<() => void>;
+  loginRequestError: PropOptions<string>;
+  showErrorToast: PropOptions<boolean>;
 }

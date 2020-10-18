@@ -16,7 +16,6 @@
       @blur="() => updateLogin('password', login.password)"
     />
     <v-btn type="submit" color="info" @click.prevent="handleOnClick">Login</v-btn>
-    <v-alert class="text-center mt-5" :value="loginRequestError !== null" color="error" prominent text>{{loginRequestError}}</v-alert> 
   </v-form>
 </template>
 
@@ -37,8 +36,7 @@ export default (Vue as VueConstructor<Vue & Refs>).extend({
     login: { required: true },
     loginError: { required: true },
     updateLogin: { required: true },
-    loginRequest: { required: true },
-    loginRequestError: { required: true }
+    loginRequest: { required: true }
   } as FormProps,
   data() {
     return {
