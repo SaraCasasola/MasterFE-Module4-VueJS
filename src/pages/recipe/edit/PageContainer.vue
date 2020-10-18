@@ -5,11 +5,11 @@
 <script lang="ts">
 import Vue from "vue";
 import RecipeEditPage from "./Page.vue";
-import { fetchRecipeById, save } from "../../../rest-api/api/recipe";
+import { fetchRecipeById, save, update } from "../../../rest-api/api/recipe";
 import { mapRecipeModelToVm, mapRecipeVmToModel } from "./mapper";
 import { Recipe, RecipeType, createEmptyRecipe, createEmptyRecipeError } from "./viewModel";
 import { validations } from "./validations";
-import { recipeTypes } from "../recipeConstants";
+import { recipeTypes, newRecipeId } from "../recipeConstants";
 
 export default Vue.extend({
   name: "RecipeEditPageContainer",
@@ -41,12 +41,12 @@ export default Vue.extend({
       validations.validateForm(this.recipe).then((result) => {
         if (result.succeeded) {
           const recipe = mapRecipeVmToModel(this.recipe);
-          save(recipe)
-            .then((message) => {
-              console.log(message);
-              this.$router.back();
-            })
-            .catch((error) => console.log(error));
+          if(recipe.id === newRecipeId) {
+            this.saveRecipe(recipe);
+            return;
+          } 
+          this.updateRecipe(recipe);
+          return;
         } else {
           this.recipeError = {
             ...this.recipeError,
@@ -54,6 +54,22 @@ export default Vue.extend({
           };
         }
       });
+    },
+    saveRecipe(recipe: Recipe) {
+      save(recipe)
+        .then((message) => {
+          console.log(message);
+          this.$router.back();
+        })
+        .catch((error) => console.log(error));
+    },
+    updateRecipe(recipe: Recipe) {
+      update(recipe)
+        .then((message) => {
+          console.log(message);
+          this.$router.back();
+        })
+        .catch((error) => console.log(error));
     },
     onSelectType(recipeType: RecipeType) {
       this.recipe = {

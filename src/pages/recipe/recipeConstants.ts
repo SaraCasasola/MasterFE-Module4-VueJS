@@ -40,3 +40,5 @@ export const recipeTypes = {
         title: "VEGETABLE"
     }
 };
+
+export const newRecipeId = 0;

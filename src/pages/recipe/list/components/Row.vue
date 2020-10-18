@@ -41,12 +41,8 @@ export default Vue.extend({
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-.row:nth-child(odd) {
-  background: white;
-}
-
 .row:hover {
-  background: floralwhite !important;
+  background: white !important;
 }
 
 .image {
