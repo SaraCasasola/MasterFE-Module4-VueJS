@@ -78,6 +78,7 @@ export default Vue.extend({
       };
     },
     onAddIngredient(ingredient: string) {
+      if(!ingredient || ingredient === "") return;
       this.recipe = {
         ...this.recipe,
         ingredients: [...this.recipe.ingredients, ingredient],
