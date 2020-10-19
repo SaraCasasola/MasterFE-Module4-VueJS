@@ -5,7 +5,7 @@
 <script lang="ts">
 import Vue from "vue";
 import { loginRequest } from "../../rest-api/api/login";
-import { baseRoutes } from "../../router";
+import { baseRoutes, localStorageUserKey } from "../../router";
 import LoginPage from "./Page.vue";
 import { createEmptyLogin, Login, createEmptyLoginError } from "./viewModel";
 import { mapLoginVMToModel } from "./mapper";
@@ -45,8 +45,9 @@ export default Vue.extend({
           const loginModel = mapLoginVMToModel(this.login);
           loginRequest(loginModel)
             .then(() => {
-              this.$router.push(baseRoutes.recipe);
+              localStorage.setItem(localStorageUserKey, this.login.name);              
               this.showErrorToast = false;
+              this.$router.push(baseRoutes.recipe);
             })
             .catch(error => {
               this.loginRequestError = error;
